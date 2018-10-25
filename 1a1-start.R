@@ -57,3 +57,6 @@ getwd()
 methods(class='matrix')
 plot(1:10)
 #Clean console by pressing CTRL + L in console
+
+#run all commands in the other sourse file - test1.R
+source('test1.R')
