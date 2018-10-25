@@ -218,9 +218,11 @@ sum(a1) #total
 (rollno = 1:30)
 (sname = paste('student',1:30,sep=''))
 (gender = sample(c('M','F'), size=30, replace=T, prob=c(.7,.3)))
+table(gender)
+prop.table(table(gender))
 (marks = floor(rnorm(30,mean= 50,sd=10)))
 (marks2 = ceiling(rnorm(30,40,5)))
-(course = sample(c('BBA','MBA'), size=30, replace=T, prob=c(.5,.5)))
+(course = sample(c('BTech','MBA'), size=30, replace=T, prob=c(.5,.5)))
 rollno; sname; gender
 marks ; marks2; course
 
@@ -237,9 +239,11 @@ df1$course = factor(df1$course)
 str(df1)
 summary(df1)
 
-
 df1  #full data
-df1$gender  # one column
+
+df1$gender = factor(df1$gender)  # one column
+df1$course = factor(df1$course)
+
 df1[ , c(2,4)] #multiple columns
 df1[1:10 ,] #select rows, all columns
 #as per conditionis
@@ -247,12 +251,15 @@ df1[ marks > 50 & gender=='F', c('rollno', 'sname','gender', 'marks')]
 df1[ marks > 50 & gender=='F', c(1,2)]
 df1[ marks > 50 | gender=='F', ]
 
+df1[marks > 50 & course == 'MBA' & gender == 'F',]
+
 names(df1)  # names of columns
 dim(df1)  #Dimensions
 
 aggregate(df1$marks, by=list(df1$gender), FUN=max)
 aggregate(marks ~ gender, data=df1, FUN=max)
 
+aggregate(marks2 ~ gender, data = df1, FUN=mean)
 
 (df2 = aggregate(cbind(marks,marks2) ~ gender + course, data=df1, FUN=mean))
 
