@@ -250,7 +250,7 @@ df1[1:10 ,] #select rows, all columns
 df1[ marks > 50 & gender=='F', c('rollno', 'sname','gender', 'marks')]
 df1[ marks > 50 & gender=='F', c(1,2)]
 df1[ marks > 50 | gender=='F', ]
-
+df1 %>% group_by(gender) %>% summarise(mean(marks), mean(marks2))
 df1[marks > 50 & course == 'MBA' & gender == 'F',]
 
 names(df1)  # names of columns
