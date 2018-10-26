@@ -4,32 +4,40 @@
 
 #Omni Store
 #creating data using Vector
-sales= c(4141,3842,3056,3519,4226, 4630,3507,3754, 5000,5120,4011, 5015,1916,675, 3636,3224,2295, 2730,2618,4421, 4113,3746, 3532, 3825,1096, 761,2088,820,2114, 1882,2159,1602,3354,2927)
-price = c(59,59,59,59,59,59,59,59,59,59,59,59, 79,79,79,79,79,79,79,79,79, 79,79,79,99,99, 99,99,99,99,99,99,99,99)
-promotion= c(200,200,200,200,400,400,400,400, 600,600,600,600,200,200,200,200, 400,400,400,400,600,600,600,600, 200,200,200,200,400,400,400,400,600,600)
+sales= c(4141,3842,3056,3519,4226,4630,3507,3754,5000,5120,4011,5015,1916,675,3636,3224,2295,2730,2618,4421,4113,3746,3532,3825,1096,761,2088,820,2114, 1882,2159,1602,3354,2927)
+price = c(59,59,59,59,59,59,59,59,59,59,59,59,79,79,79,79,79,79,79,79,79,79,79,79,99,99, 99,99,99,99,99,99,99,99)
+promotion= c(200,200,200,200,400,400,400,400,600,600,600,600,200,200,200,200,400,400,400,400,600,600,600,600, 200,200,200,200,400,400,400,400,600,600)
 #Create a DF from 3 variables
 omni1 = data.frame(sales,price,promotion)
 head(omni1)
 
 #2nd Method : from CSV file
 #omni2 = read.csv(file.choose())
+omni2a = read.csv('./data/salesqty.csv')
+head(omni2a)
 
-#3rd Method : from gsheet 
+omni2b = read.csv(file.choose())
+head(omni2b)
+
+#3rd Method : from gsheet
 library(gsheet)
 url = "https://docs.google.com/spreadsheets/d/1h7HU0X_Q4T5h5D1Q36qoK40Tplz94x_HZYHOJJC_edU/edit#gid=1595306231"
 omni3 = as.data.frame(gsheet::gsheet2tbl(url))
 head(omni3)
+
 #Make one of data frames active
 omni = omni1
 head(omni)
 str(omni)
 nrow(omni)
+summary(omni)
 #MLR  Create Multiple Linear Regression
 # we want to see how Sales Qty depend on Price and Promotion Values
 fit2 = lm(sales ~ price + promotion, data=omni)
 
 # summary statistics of model IMP STEP
 summary(fit2)
+plot(fit2)
 #understand values : R2, AdjR2, Fstats pvalue, Coeff, ***, Residuals
 #F Stats pvalue = 2.86e-10 < 0.05 : Model Exists
 #At least 1 IV can be used to predict sales
@@ -92,3 +100,4 @@ head(omni)
 cbind(omni, predict(fit2, newdata = data.frame(omni$price, omni$promotion)))
 cbind(omni, fitted(fit2))
 cbind(omni, fitted(fit2), omni$sales - fitted(fit2), residuals(fit2))
+
