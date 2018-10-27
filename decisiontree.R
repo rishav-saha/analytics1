@@ -17,10 +17,10 @@ library(rpart.plot)
 #Decision Tree
 fit = rpart(survived~., data = data, method = 'class')
 fit
-rpart.plot(fit, extra = 106, cex=.8,nn=T)  #plot
-
+rpart.plot(fit, extra = 106, cex=.9,nn=T)  #plot
+?prune
 printcp(fit) #select complexity parameter
-prunetree2 = prune(fit, cp=.014)
+prunetree2 = prune(fit, cp=.015)
 rpart.plot(prunetree2, cex=.8,nn=T)
 prunetree2
 nrow(data)
