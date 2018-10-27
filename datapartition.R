@@ -56,3 +56,4 @@ length(index3)
 prop.table(t3a)
 (t3b=table(test2$gender))
 prop.table(t3b)
+
