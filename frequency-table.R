@@ -18,6 +18,8 @@ barplot(x2a, beside=T, col=rainbow(length(unique(color))))
 barplot(x2a, beside=T, col=unique(color), names.arg=names(x2))
 barplot(x2a, beside=T, col=sort(unique(color)), names.arg=names(x2))
 
+
+
 pie(x2a)
 
 #Continuous Data 
@@ -61,6 +63,6 @@ h
 hist(x3, freq=F)
 lines(density(x3))
 
-x4=rnorm(1000, 200, 5)
+x4=rnorm(1000, 60, 5)
 hist(x4, freq = F)
 lines(density(x4))
