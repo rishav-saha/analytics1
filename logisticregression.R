@@ -1,6 +1,5 @@
 # Logistic Regression : Predict Purchase
 
-
 # Import the dataset
 df1 = read.csv('./data/logr2.csv')
 head(df1)
@@ -10,13 +9,15 @@ library(gsheet)
 df2 = as.data.frame(gsheet2tbl(url))
 head(df2)
 
-dataset=df2  #or df2 if data is imported from google sheets
+dataset=df1  #or df2 if data is imported from google sheets
 head(dataset)
 str(dataset)
 summary(dataset)
 dim(dataset)
+names(dataset)
 View(dataset)
 dataset$gender = factor(dataset$gender)
+dataset$purchased = factor(dataset$purchased)
 
 
 # Split the dataset into the Training set and Test set
@@ -31,7 +32,7 @@ dim(dataset); dim(training_set); dim(test_set)
 names(dataset)
 
 
-# Logisitic Model on Training Set
+# Logisitic Model on Training Set 
 logitmodel1 = glm(purchased ~ gender + age + salary, family = binomial,  data = training_set)
 summary(logitmodel1)
 
@@ -67,3 +68,4 @@ library(caret)
 caret::confusionMatrix(cm)
 
 names(dataset)
+
