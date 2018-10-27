@@ -37,9 +37,9 @@ cbind(data, prob)
 
 #cutoff value
 library(InformationValue)
-(optCutOff <- optimalCutoff(data$admit, prob)[1] ) #.46
+(optCutOff <- optimalCutoff(data$admit, prob)[1] ) #.4684
 confusionMatrix(data$admit, prob, threshold = optCutOff)
-(accuracy = (247+38)/ (sum(247+38+89+26))) # .715
+(accuracy = (247+38)/ (sum(247+38+89+26))) # .7125
 confusionMatrix(data$admit, prob, threshold = .7)
 (accuracy = (272+2)/ (sum(272+2+125+1))) #.685
 

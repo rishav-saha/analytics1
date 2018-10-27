@@ -3,6 +3,7 @@
 # Import the dataset
 df1 = read.csv('./data/logr2.csv')
 head(df1)
+tail(df1)
 
 url="https://docs.google.com/spreadsheets/d/1Md_ro2t3M7nA9JMH1DsE12jfeX7qq-UPw6p8WQd6A2Y/edit#gid=120271978"
 library(gsheet)
@@ -36,7 +37,7 @@ names(dataset)
 logitmodel1 = glm(purchased ~ gender + age + salary, family = binomial,  data = training_set)
 summary(logitmodel1)
 
-# gender not insignificant dropped here
+# gender not significant, so dropped here
 logitmodel2 = glm(purchased ~ age + salary, family = binomial, data = training_set)
 summary(logitmodel2)
 
@@ -66,6 +67,3 @@ cm
 
 library(caret)
 caret::confusionMatrix(cm)
-
-names(dataset)
-
