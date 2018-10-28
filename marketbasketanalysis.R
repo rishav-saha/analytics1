@@ -16,11 +16,11 @@ arules::inspect(Groceries[1:5])
 frequentItems = eclat (Groceries, parameter = list(supp = 0.01, minlen= 2, maxlen = 5)) 
 inspect(frequentItems[1:10])
 frequentItems
-inspect(frequentItems[10:100])
+inspect(frequentItems[10:15])
 #inspect(frequentItems[100:122])
 #Descending Sort frequent items by count : 1 to 25 itemsets
-inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:25])
-inspect(sort (frequentItems, by="count", decreasing=F)[1:25])
+inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:15])
+inspect(sort (frequentItems, by="count", decreasing=F)[1:15])
 
 #Support is : support(A&B) = n(A&B)/ N
 #Plot the Frequency Plot
@@ -43,7 +43,7 @@ inspect (rulesl[1:5])
 #How To Control The Number Of Rules in Output ?
 #maxlen, minlen, supp, conf
 rules2 = apriori (Groceries, parameter = list (supp = 0.001, conf = 0.5, minlen=2, maxlen=6)) 
-inspect(rules2[1:50])
+inspect(rules2[1:15])
 #legend to condition commands 
 # lhs - means left hand side, or antecendent
 # rhs - mean right hand side, or consequent
@@ -74,7 +74,7 @@ inspect(subset4[1:5])
 plot(subset1[1:10]) 
 plot(subset1[1:10], measure=c("support", "lift"), shading="confidence")
 
-#
+
 #we can create subset conditions at the time of creation of rules
 #Find what factors influenced an event ‘X’
 rules3 = apriori (data=Groceries, parameter=list (supp=0.002,conf = 0.8), appearance = list (default="lhs",rhs="whole milk"), control = list (verbose=F))
