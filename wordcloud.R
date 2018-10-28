@@ -52,3 +52,32 @@ rquery.wordcloud(x=url, type="url")
 url = "http://www.sthda.com/english/wiki/create-and-format-powerpoint-documents-from-r-software"
 rquery.wordcloud(x=url, type="url")
 
+
+
+
+
+
+
+#from data drive
+
+filePath = "./data/IIMB.txt"
+res=rquery.wordcloud(filePath, type ="file", lang = "english")
+#to plot more words
+res=rquery.wordcloud(filePath, type ="file", lang = "english",  min.freq = 1,  max.words = 200)
+#change colors
+# Reds color palette
+res=rquery.wordcloud(filePath, type ="file", lang = "english", colorPalette = "Reds")
+# RdBu color palette
+res=rquery.wordcloud(filePath, type ="file", lang = "english",colorPalette = "RdBu")
+# use unique color
+res=rquery.wordcloud(filePath, type ="file", lang = "english", colorPalette = "black")
+
+
+#From DataFrame
+wordcloud2(demoFreq, size = 1.6)
+word = c('marketing', 'price', 'demand', 'supply', 'consumer', 'sales', 'Clients', 'Strategy', 'Promotions', 'Operations', 'Analysis', 'Offers')
+freq = c(30, 28, 12, 17, 8, 50, 20, 35, 9, 10, 40, 17)
+df1 = data.frame(word, freq)
+rownames(df1)
+head(df1)
+wordcloud2(df1, size = .5)
